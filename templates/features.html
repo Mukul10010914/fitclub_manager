@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Features</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/c.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+	<script type="text/javascript">
+		function openNav() 
+		{
+		  	document.getElementById("mySidebar").style.width = "300px";
+		}
+
+		function closeNav() 
+		{
+			document.getElementById("mySidebar").style.width = "0";
+		}
+	</script>
+</head>
+<body class="b">
+	<div id="mySidebar" class="sidebar">
+	  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+	  	{% if request.user.is_authenticated %}
+	  		<a href="{% url 'member' %}">Members</a>
+	  	{% else %}
+	  		<a href="{% url 'about' %}">About Us</a>
+	  	{% endif %}
+
+	  	{% if request.user.is_authenticated %}
+	  		<a href="{% url 'settings' %}">Settings</a>
+	  	{% else %}
+	  		<a href="{% url 'signin' %}">Login</a>
+	  	{% endif %}
+
+	  	<a href="{% url 'features' %}">Features</a>
+	  	<a href="{% url 'contact' %}">Contact Us</a>
+	  	
+	  	{% if request.user.is_authenticated %}
+	  		<a href="{% url 'logout' %}">Log Out</a>
+	  	{% else %}
+	  		<a href="{% url 'signup' %}">Start Your 30-Day Free Trial</a>
+	  	{% endif %}
+	</div>
+
+	<div class="navbar">
+	  	{% if request.user.is_authenticated %}
+	  		<a href="{% url 'welcome' %}" style="width: 85%; text-align: left;">FitClub Manager</a>
+	  	{% else %}
+	  		<a href="{% url 'home' %}" style="width: 85%; text-align: left;">FitClub Manager</a>
+	  	{% endif %}
+	  	<a class="openbtn" onclick="openNav()">☰</a>
+	</div>
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<div style="width: 60%; margin: auto;" align="center">
+		<h2 class="td1" style="opacity: 0.8;">
+			FEATURES OF GYM MANAGEMENT SOFTWARE
+		</h2>
+		<hr style="border-color: rgba(231, 195, 20, 0.7);">
+		<br>
+		<h3 class="td1">Membership Management</h3>
+		<p class="td1">
+			Make a bond and remain bind with your members – In this, you can keep complete details of the members like their complete profile, workout scheduled, body measurement, active and non-active plans, present status, the attendance record, birthday, anniversary, all the essential details you can add in it.
+		</p>
+		<br>
+		<p class="td1" style="background-color: rgba(0, 0, 0, 0.6); padding: 10px; width: 59%">
+			This feature in gym management software helps you to stay connected with your members, you can communicate with them with direct WhatsApp or can send an SMS also. It makes your work easier and quicker.
+		</p>
+	</div>
+
+	<br>
+
+	<div style="width: 60%; margin: auto;">
+		<ul class="td1" style="margin: auto;">
+			<li style="margin-top: 10px;">It manages members and their complete profile.</li>
+			<li style="margin-top: 10px;">Member’s which plan is going on now and was on earlier all such data you can find in it.</li>
+			<li style="margin-top: 10px;">It has two online payment gateways- Paytm for domestic users and PayPal for worldwide.</li>
+			<li style="margin-top: 10px;">Within this, you can keep different types of members separately like active or non-active members, frozen or paused membership, trainers & staff all such people can be automatically separated.</li>
+			<li style="margin-top: 10px;">You can upgrade or change your member’s plan and can add more than one plan at a time.</li>
+		</ul>
+	</div>
+	<br>
+	<br>
+	<div style="width: 60%; margin: auto;" align="center">
+		<hr style="border-color: rgba(231, 195, 20, 0.7);">
+		<h3 class="td1">Enquiry Management</h3>
+		<p class="td1">
+			You can keep the details of people who come to know about your gym or to take the trial, if you give them any discount or any offer
+			Here you can put the information along with the time and date, and you can keep the details of when to call them next.
+			We have designed this feature so that it will help you to keep track of your potential clients and convert as many as possible into new clients.
+		</p>		
+	</div>
+	<br>
+	<br>
+	<div style="width: 60%; margin: auto;" align="center">
+		<hr style="border-color: rgba(231, 195, 20, 0.7);">
+		<h3 class="td1">Renewal Management</h3>
+		<p class="td1">
+			It includes a way to send renewal reminders to members, which encourages or motivates them. It helps you to stay on track when it comes to finances.
+		</p>		
+	</div>
+	<br>
+	<br>
+	<div style="width: 60%; margin: auto;" align="center">
+		<hr style="border-color: rgba(231, 195, 20, 0.7);">
+		<h3 class="td1">Automated Reminders</h3>
+		<p class="td1">
+			This feature automatically sends a reminder message from the software to your member. Many people forget their due date for renewal.
+			Automated messaging saves time and the ability to work to do. And members will remember that their due date is coming and you can also secretly message them as a reminder.
+			The automation system sends follow-ups and payment reminders for upcoming and past-dues.
+		</p>		
+	</div>
+	<br>
+	<br>
+	<div style="width: 60%; margin: auto;" align="center">
+		<hr style="border-color: rgba(231, 195, 20, 0.7);">
+		<h3 class="td1">Get 24*7 Support</h3>
+		<p class="td1">
+			The most evident favorable position of a gym management system with 24*7 availability of your online support is having the option to keep your door open for your clients. Understand the requirements of your individuals by offering them the comfort of having the option to work out now and again with best accommodates their timetable. We are the best and No.1 gym software which complete your customization needs according to the requirement of the fitness business.
+		</p>		
+	</div>
+	<br>
+	<br>
+	<div style="width: 60%; margin: auto;" align="center">
+		<h4 class="td1">FitClub Manager Software manages your businesses small and big tasks very simply into a compact software</h4>
+	</div>
+
+	<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6146df2a25797d7a89ffb56c/1ffudffrm';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+</html>

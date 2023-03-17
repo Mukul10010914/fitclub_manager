@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Members</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/c.css' %}">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		<style type="text/css">
+			.t2
+			{
+				border: 2px solid black;
+				font-family: "New Century Schoolbook", Times, serif;
+				border-collapse: collapse;
+			}
+
+			.t2 td, th
+			{
+				border: 1px solid black
+			}
+		</style>
+	</head>
+
+	<body>
+		<table width="100%" class="t2" align="center" style="margin-top: 20px; text-align: center; font-weight: bold" cellpadding="10px">
+			<tr>
+				<th colspan="11" style="font-size: 24px; text-align: left; color: #E7A414; background-color:#59595c;"><i style="margin-left: 10px;">FitClub Manager</i></th>
+			</tr>
+			<tr>
+				<th>ID</th>
+				<th>NAME</th>
+				<th>DATE OF BIRTH</th>
+				<th>PHONE NUMBER</th>
+				<th style="width: auto;">EMAIL</th>
+				<th>GENDER</th>
+				<th>FATHER's NAME</th>
+				<th>MOTHER's NAME</th>
+				<th>EMERGENCY PHONE NUMBER</th>
+				<th>SPOUSE's NAME</th>
+				<th>DATE OF ANNIVERSARY</th>
+			</tr>
+
+			{{ h|safe }}
+		</table>
+	</body>
+</html>

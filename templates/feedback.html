@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Submit Feedback</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/c.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+	<script type="text/javascript">
+		function openNav() 
+		{
+		  	document.getElementById("mySidebar").style.width = "300px";
+		}
+
+		function closeNav() 
+		{
+			document.getElementById("mySidebar").style.width = "0";
+		}
+	</script>
+</head>
+<body class="b">
+	<div id="mySidebar" class="sidebar">
+	  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+	  	<a href="{% url 'member' %}">Members</a>
+
+	  	<a href="{% url 'settings' %}">Settings</a>
+
+	  	<a href="{% url 'features' %}">Features</a>
+
+	  	<a href="{% url 'contact' %}">Contact Us</a>
+
+	  	<a href="{% url 'logout' %}">Log Out</a>
+	</div>
+
+	<div class="navbar">
+		{% if request.user.is_authenticated %}
+	  		<a href="{% url 'welcome' %}" style="width: 85%; text-align: left;">FitClub Manager</a>
+	  	{% else %}
+	  		<a href="{% url 'home' %}" style="width: 85%; text-align: left;">FitClub Manager</a>
+	  	{% endif %}
+	  	<a class="openbtn" onclick="openNav()">☰</a>
+	</div>
+
+	<br>
+	<br>
+
+	<div style="margin: auto; margin-top: 70px; width: 60%;" align="center">
+		<form method="POST" action="{% url 'feedback' %}">
+			{% csrf_token %}
+			<table width="100%" class="table1" style="font-size: 18px;">
+				<tr>
+					<th colspan="2" style="text-align: center; font-size: 22px;">
+						Your Overall Experience with Us.
+					</th>
+				</tr>
+				<tr>
+					<th>
+						Rate
+					</th>
+					<td>
+						<span class="star-rating">
+						  	<input type="radio" name="rating" value="1" required="required"><i></i>
+						  	<input type="radio" name="rating" value="2"><i></i>
+						  	<input type="radio" name="rating" value="3"><i></i>
+						  	<input type="radio" name="rating" value="4"><i></i>
+						  	<input type="radio" name="rating" value="5"><i></i>
+						</span>
+					</td>
+				</tr>
+				<tr>
+					<th>
+						<label>Comments (If any)</label>
+					</th>
+					<td>
+						<input type="text" name="comment">
+					</td>
+				</tr>
+				<tr>
+					<th colspan="2">
+						<input type="submit" value="Submit">
+					</th>
+				</tr>
+			</table>
+		</form>
+	</div>
+	
+	<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6146df2a25797d7a89ffb56c/1ffudffrm';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+</html>

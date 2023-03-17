@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>FitClub Manager</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/c.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+	<script type="text/javascript">
+		function openNav() 
+		{
+		  	document.getElementById("mySidebar").style.width = "300px";
+		}
+
+		function closeNav() 
+		{
+			document.getElementById("mySidebar").style.width = "0";
+		}
+	</script>
+</head>
+<body class="b">
+	<div id="mySidebar" class="sidebar">
+	  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+	  	<a href="{% url 'about' %}">About Us</a>
+	  	<a href="{% url 'signin' %}">Login</a>
+	  	<a href="{% url 'features' %}">Features</a>
+	  	<a href="{% url 'signup' %}">Start Your 30-Day Free Trial</a>
+	  	<a href="{% url 'contact' %}">Contact Us</a>
+	</div>
+
+	<div class="navbar">
+	  	<a href="{% url 'home' %}" style="width: 85%; text-align: left;">FitClub Manager</a>
+	  	<a class="openbtn" onclick="openNav()">☰</a>
+	</div>
+
+	<div class="container">
+		<img src="{% static '001.jpg' %}" class="i">
+		<div class="top-left"><i>Easy and Efficient Web-Based Gym Management System.</i></div>
+		<div class="button-left">
+			<table>
+				<tr>
+					<td>
+						<button class="b1" onclick="location.href='{% url 'signin' %}'">Log In</button>
+					</td>
+					<td>
+						<button class="b1" onclick="location.href='{% url 'features' %}'">Features</button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<br>
+	<br>
+
+	<h2 align="center" style="color: #E7C314;">Features</h2>
+
+	<div>
+		<table align="center" width="80%" style="text-align: center;">
+			<tr class="td1">
+				<td width="50%">
+					<i class="fa fa-user-circle" aria-hidden="true" style="font-size: 80px;"></i>
+				</td>
+				<td>
+					<i class="fa fa-credit-card" aria-hidden="true" style="font-size: 80px;"></i>
+				</td>
+			</tr>
+			<tr class="td1">
+				<th>
+					Members Management
+				</th>
+				<th>
+					Fees Payment Tracking
+				</th>
+			</tr>
+			<tr class="td1">
+				<td>
+					You can create, update, and delete your members. You have complete control over your member’s activity
+				</td>
+				<td>
+					You can track your payments very easily
+				</td>
+			</tr>
+		</table>
+
+		<br>
+		<br>
+
+		<table align="center" width="80%" style="text-align: center;">
+			<tr class="td1">
+				<td>
+					<i class="fa fa-exclamation-circle" aria-hidden="true" style="font-size: 80px;"></i>
+				</td>
+				<td width="50%">
+					<i class="fa fa-database" aria-hidden="true" style="font-size: 80px;"></i>
+				</td>
+			</tr>
+			<tr class="td1">
+				<th>
+					Payment Reminders
+				</th>
+				<th>
+					Unlimited Data
+				</th>
+			</tr>
+			<tr class="td1">
+				<td>
+					Automatically Reminds You to collect Balance
+				</td>
+				<td>
+					You can store a maximum-to-maximum number of data in your gym management system. There is no limit over storing your data
+				</td>
+			</tr>
+		</table>
+
+		<br>
+		<br>
+
+		<table align="center" width="80%" style="text-align: center;">
+			<tr class="td1">
+				<td width="50%">
+					<i class="fa fa-file" aria-hidden="true" style="font-size: 80px;"></i>
+				</td>
+				<td>
+					<i class="fa fa-envelope" aria-hidden="true" style="font-size: 80px;"></i>
+				</td>
+			</tr>
+			<tr class="td1">
+				<th>
+					Automatic Report
+				</th>
+				<th>
+					Marketing
+				</th>
+			</tr>
+			<tr class="td1">
+				<td>
+					With a few click you can get a report of due date, active and non-active users.
+				</td>
+				<td>
+					It allows to send marketing sms and emails
+				</td>
+			</tr>
+		</table>
+	</div>
+	<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6146df2a25797d7a89ffb56c/1ffudffrm';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Payment</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/c.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+</head>
+<body class="b">
+	
+	<div style="width: 50%; margin: auto;" align="center">
+		<table class="table1" width="100%" cellpadding="10px">
+			<tr>
+				<th>Plan:</th>
+				<td>{{ p }}</td>
+			</tr>
+			<tr>
+				<th>Amount:</th>
+				<td>₹{% widthratio pay.amount 100 1 %}</td>
+			</tr>
+			<tr>
+				<th colspan="2">
+					<form action="{% url 'success' %}" method="POST" style="background-color: transparent;">
+						{% csrf_token %}
+						<input type="hidden" name="plan" value="{{ p }}">
+						<script
+						    src="https://checkout.razorpay.com/v1/checkout.js"
+						    data-key="rzp_test_yiOWNNyFRwA6SD" 
+						    data-amount="{{pay.amount}}"
+						    data-currency="INR"
+						    data-order_id="{{pay.id}}"
+						    data-buttontext="Pay with RAZORPAY"
+						    data-name="FitClub Manager"
+						    data-description="{{FitClub_Manager}}"
+						    data-image="{% static '002.jpg' %}"
+						    data-prefill.name="{{request.user.first_name}}"
+						    data-prefill.email="{{request.user.email}}"
+						    data-theme.color="#59595c"
+						></script>
+						<input type="hidden" custom="Hidden Element" name="hidden">
+					</form>
+				</th>
+			</tr>
+		</table>
+	</div>
+
+	
+</body>
+</html>

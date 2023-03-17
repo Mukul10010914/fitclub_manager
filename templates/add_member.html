@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Add Member</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/c.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+	<script type="text/javascript">
+		function openNav() 
+		{
+		  	document.getElementById("mySidebar").style.width = "250px";
+		}
+
+		function closeNav() 
+		{
+			document.getElementById("mySidebar").style.width = "0";
+		}
+	</script>
+
+	<style type="text/css">
+		.d1
+		{
+		  	width: 100%;
+		  	padding: 12px 20px;
+		  	margin: 8px 0;
+		  	box-sizing: border-box;
+		}
+
+		.d2
+		{
+			color: #E7A414;
+			text-align: left;
+		
+	</style>
+</head>
+<body class="b" style="overflow-x: auto;">
+	<div id="mySidebar" class="sidebar">
+	  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+	  	<a href="{% url 'member' %}">Members</a>
+	  	<a href="{% url 'settings' %}">Settings</a>
+	  	<a href="{% url 'features' %}">Features</a>
+	  	<a href="{% url 'contact' %}">Contact Us</a>
+	  	<a href="{% url 'logout' %}">Log Out</a>
+	</div>
+
+	<div class="navbar">
+	  	<a href="{% url 'welcome' %}" style="width: 85%; text-align: left;">FitClub Manager</a>
+	  	<a class="openbtn" onclick="openNav()">☰</a>
+	</div>
+
+	<div style="width: 70%; margin: auto; margin-top: 60px;" align="center">
+		<form method="POST" action="" enctype="multipart/form-data">
+			{% csrf_token %}
+			<table width="100%" class="table1" cellspacing="20px">
+				<tr>
+					<th colspan="4" style="text-align: right; font-size: 50px; font-family: Georgia, serif;">
+						Add Members
+					</th>
+				</tr>
+
+				<tr>
+					<th>
+						<label for="profile_img">Profile Image:</label>
+					</th>
+					<td colspan="3">
+						<input class="da" capture="user" id="image" type="file" name="profile_img" placeholder="Photo" required="required" accept="image/*" style="color: #e7a414; font-weight: bold;">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						<label for="name">Name:</label>
+					</th>
+					<td colspan="3">
+						<input type="text" name="name" required="required" placeholder="Name">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						<label for="dob">Date Of Birth:</label>
+					</th>
+					<td>
+						<input type="date" name="dob" class="d1"  value="{{placement.date|date:'Y-m-d' }}" required="required">
+					</td>
+					<th>
+						<label for="doa">Date Of Anniversary:</label>
+					</th>
+					<td>
+						<input type="date" name="doa" class="d1" value="1960-01-01">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						<label for="address">Address:</label>
+					</th>
+					<td colspan="3">
+						<input type="text" name="address" required="required" placeholder="Address">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						<label for="email">Email:</label>
+					</th>
+					<td colspan="3">
+						<input type="text" name="email" required="required" placeholder="someone123@xyz.com">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						<label for="phone_number">Phone Number:</label>
+					</th>
+					<td>
+						<input type="text" name="phone_number" required="required" placeholder="Phone Number">
+					</td>
+					<th>
+						<label for="emergency_phone_number">Emergency Phone Number:</label>
+					</th>
+					<td>
+						<input type="text" name="emergency_phone_number" value="0000000000" placeholder="Emergency Phone Number">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						<label for="gender">Gender:</label>
+					</th>
+					<th>
+						<input type="radio" name="gender" value="Male" id="male" required="required">
+						<label for="male" class="d2">Male</label>
+						&nbsp;
+
+						<input type="radio" name="gender" value="Female" id="female" required="required">
+						<label for="female" class="d2">Female</label>
+						&nbsp;
+
+						<input type="radio" name="gender" value="Other" id="other">
+						<label for="other" class="d2">Other</label>
+					</th>
+				</tr>
+
+				<tr>
+					<th>
+						<label for="fname">Father's Name:</label>
+					</th>
+					<td>
+						<input type="text" name="fname" value="-">
+					</td>
+					<th>
+						<label for="mname">Mother's Name:</label>
+					</th>
+					<td>
+						<input type="text" name="mname" value="-">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						<label for="sname">Spouse's Name:</label>
+					</th>
+					<td>
+						<input type="text" name="sname" value="-">
+					</td>
+					<td></td>
+					<td>
+						<input type="submit" value="Save">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="4" style="text-align: right;">
+						<button class="b3" onclick="location.href='{% url 'member' %}'" style="font-family: 'Times New Roman', serif; font-weight: bold; font-size: 17px;">Back</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6146df2a25797d7a89ffb56c/1ffudffrm';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+</body>
+</html>

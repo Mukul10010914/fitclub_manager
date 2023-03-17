@@ -1,0 +1,130 @@
+{% extends 'profile.html' %}
+
+{% block body %}
+	<div style="width: 60%; margin: auto; margin-top: 70px; margin-left: 38%;">
+		<i style="color: #e7a414; font-size: 25px; font-weight: bold;">..Membership Details..</i>
+		<ul class="snav">
+		  	<li>
+		  		<form method="POST" action="{% url 'profile' %}">
+		  			{% csrf_token %}
+		  			<input type="hidden" name="client_id" value="{{t.id}}">
+		  			<input type="submit" Value="History" style="text-align: center; border: none; padding: 14px 16px; text-decoration: none; background: transparent; color: white;">
+		  		</form>
+		  	</li>
+		  	<li>
+		  		<form method="POST" action="{% url 'prenew' %}">
+		  			{% csrf_token %}
+		  			<input type="hidden" name="client_id" value="{{t.id}}">
+		  			<input type="submit" Value="Renew Membership" class="active" style="text-align: center; border: none; padding: 14px 16px; text-decoration: none;">
+		  		</form>
+		  	</li>
+		  	<li>
+		  		<form method="POST" action="{% url 'profile' %}">
+		  			{% csrf_token %}
+		  			<input type="hidden" name="client_id" value="{{t.id}}">
+		  			<input type="submit" Value="Edit Details" style="text-align: center; border: none; padding: 14px 16px; text-decoration: none; background: transparent; color: white;">
+		  		</form>
+		  	</li>
+		</ul>
+	</div>
+
+	<div style="width: 60%; margin-left: 38%; margin-top: 20px;">
+		<form method="POST" action="{% url 'subscription' %}" oninput="final_amount.value=parseFloat(amount.value)-parseFloat(discount.value)">
+			{% csrf_token %}
+			<table class="table1" width="100%">
+				<tr>
+					<th width="40%">
+						<div style="padding: 12px 0px;">
+							Time:
+						</div>
+					</th>
+					<td width="20%">
+						<div>
+							<input type="radio" id="monthly" name="time" value="Monthly" required="required">
+							<label for="monthly">Monthly</label>
+						</div>
+					</td>
+
+					<td width="20%">
+						<input type="radio" id="quaterly" name="time" value="Quaterly" required="required">
+						<label for="quaterly">Quaterly</label>
+					</td>
+
+					<td width="20%">
+						<input type="radio" id="yearly" name="time" value="Yearly" required="required">
+						<label for="yearly">Yearly</label>
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						Amount:
+					</th>
+					<td colspan="3">
+						<input type="text" name="amount" placeholder="Amount(₹)" required="required" id="amount">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						Discount:
+					</th>
+					<td colspan="3">
+						<input type="text" name="discount" placeholder="Discount(₹)" id="discount" value="0">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						Final Amount:
+					</th>
+					<td colspan="3">
+						<input type="text" name="final_amount" id="final" for="amount discount" placeholder="Final Amount(₹)">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						Date:
+					</th>
+					<td colspan="3">
+						<input type="date" name="startdate" class="da" required="required">
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						<div style="padding: 12px 0px;">
+							Payment Method:
+						</div>
+					</th>
+					<td>
+						<input type="radio" name="payment_method" value="Cash">Cash
+					</td>
+
+					<td>
+						<input type="radio" name="payment_method" value="Online Payment">Online Payment
+					</td>
+				</tr>
+
+				<tr>
+					<th>
+						<div style="padding: 12px 0px;">
+							Paid:
+						</div>
+					</th>
+					<td colspan="3">
+						<input type="checkbox" name="payment_status">
+					</td>
+				</tr>
+
+				<tr>
+					<th colspan="4">
+						<input type="hidden" name="client_id" value="{{ t.id }}">
+						<input type="submit">
+					</th>
+				</tr>
+			</table>
+		</form>
+	</div>
+{% endblock body %}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>FitClub Manager</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/c.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<title>About Us</title>
+
+	<script type="text/javascript">
+		function openNav() 
+		{
+		  	document.getElementById("mySidebar").style.width = "300px";
+		}
+
+		function closeNav() 
+		{
+			document.getElementById("mySidebar").style.width = "0";
+		}
+	</script>
+</head>
+<body class="b">
+	<div id="mySidebar" class="sidebar">
+	  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+	  	<a href="{% url 'about' %}">About Us</a>
+	  	<a href="{% url 'signin' %}">Login</a>
+	  	<a href="{% url 'features' %}">Features</a>
+	  	<a href="{% url 'signup' %}">Start Your 30-Day Free Trial</a>
+	  	<a href="{% url 'contact' %}">Contact Us</a>
+	</div>
+
+	<div class="navbar">
+	  	<a href="{% url 'home' %}" style="width: 85%; text-align: left;">FitClub Manager</a>
+	  	<a class="openbtn" onclick="openNav()">☰</a>
+	</div>
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<div style="width: 60%; margin: auto;" align="center">
+		<h3 class="td1" style="opacity: 0.7;">
+			GYM MANAGEMENT SOFTWARE
+		</h3>
+
+		<h2 class="td1">
+			<u>About Us</u>
+		</h2>
+
+		<h4 class="td1">
+			FitClub Manager is a web based gym management software. It has all the features to manage day-to-day running of the gym. You can contact us 24x7 for assistance and support.
+			<br>
+			We work for fitness centers, health clubs, gyms, CrossFit studios, pilates, and personal training.
+			<br>
+			<br>
+			It gives your gym a professional look and makes your front desk easily available for member check-in and assures you of an integrated payment platform. This gym software helps you to manage your fitness membership data, financial goals, and business operations. We are a powerful brand in the fitness industry. It has unique benefits with complete solutions.
+		</h4>
+		<br>
+		<hr style="border-color: rgba(231, 195, 20, 0.7);">
+	</div>
+
+	<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6146df2a25797d7a89ffb56c/1ffudffrm';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+</html>

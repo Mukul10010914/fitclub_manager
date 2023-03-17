@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Member</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/c.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<script type="text/javascript">
+		function openNav() 
+		{
+		  	document.getElementById("mySidebar").style.width = "250px";
+		}
+
+		function closeNav() 
+		{
+			document.getElementById("mySidebar").style.width = "0";
+		}
+	</script>
+</head>
+<body class="b">
+	<div id="mySidebar" class="sidebar">
+	  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+	  	<a href="{% url 'member' %}">Members</a>
+	  	<a href="{% url 'settings' %}">Settings</a>
+	  	<a href="{% url 'features' %}">Features</a>
+	  	<a href="{% url 'contact' %}">Contact Us</a>
+	  	<a href="{% url 'logout' %}">Log Out</a>
+	</div>
+
+	<div class="navbar">
+	  	<a href="{% url 'welcome' %}" style="width: 85%; text-align: left;">FitClub Manager</a>
+	  	<a class="openbtn" onclick="openNav()">☰</a>
+	</div>
+
+	<div style="margin-top: 70px; margin-right: 50px;" align="right">
+		<table>
+			<tr>
+				<td style="text-align: right;">
+					<button class="b3" onclick="location.href='{% url 'member' %}'" style="font-family: 'Times New Roman', serif; font-weight: bold; font-size: 17px;">Back</button>
+				</td>
+			</tr>
+			<tr>
+				<th colspan="4" style="text-align: right; font-size: 50px; font-family: Georgia, serif; color: #e7a430">
+					Expired Membership List
+				</th>
+			</tr>
+		</table>		
+	</div>
+
+	<div style="margin-top: 20px; overflow-x: auto;" align="center">
+		<table class="darkTable">
+			<thead>
+				<tr>
+					<th>Member ID</th>
+					<th>Name</th>
+					<th>Phone Number</th>
+					<th>Email</th>
+					<th>Address</th>
+					<th>Date Of Birth</th>
+					<th>Gender</th>
+					<th>Membership</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for d in data %}
+					<tr>
+						<td>{{ d.id }}</td>
+						<td>
+							<form method="POST" action="{% url 'profile' %}">
+								{% csrf_token %}
+								<input type="hidden" name="client_id" value="{{ d.id }}">
+								<input type="submit" value="{{ d.name }}">
+							</form>
+						</td>
+						<td>{{ d.phone_number }}</td>
+						<td>{{ d.email }}</td>
+						<td>{{ d.address }}</td>
+						<td>{{ d.dob }}</td>
+						<td>{{ d.gender }}</td>
+						{% if d.active ==  "True" %}
+							<td>
+								<i style="background: green; padding: 10px">Active</i>
+							</td>
+						{% else %}
+							<td>
+								<i style="background: #C81414; padding: 10px">Over</i>
+							</td>
+						{% endif %}
+					</tr>
+					{% empty %}
+						<tr>
+							<td colspan="7">Add Someone to Display</td>
+						</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6146df2a25797d7a89ffb56c/1ffudffrm';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+</html>

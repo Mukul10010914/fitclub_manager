@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Renew Membership</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/c.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	
+	<script type="text/javascript">
+		function openNav() 
+		{
+		  	document.getElementById("mySidebar").style.width = "300px";
+		}
+
+		function closeNav() 
+		{
+			document.getElementById("mySidebar").style.width = "0";
+		}
+
+		function uncheck()
+		{
+			document.getElementById("basic").checked = false;
+			document.getElementById("premium").checked = false;
+		}
+	</script>
+</head>
+
+<body class="b" style="background-color: #59595c;">
+	<div id="mySidebar" class="sidebar">
+	  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+	  	<a href="{% url 'member' %}">Members</a>
+	  	<a href="{% url 'settings' %}">Settings</a>
+	  	<a href="{% url 'features' %}">Features</a>
+	  	<a href="{% url 'contact' %}">Contact Us</a>
+	  	<a href="{% url 'logout' %}">Log Out</a>
+	</div>
+
+	<div class="navbar">
+	  	<a href="{% url 'welcome' %}" style="width: 85%; text-align: left;">FitClub Manager</a>
+	  	<a class="openbtn" onclick="openNav()">☰</a>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div style="width: 70%; margin: auto;" align="center">
+		<form method="POST" action="{% url 'payment' %}" id="plan">
+			{% csrf_token %}
+			<table width="100%" cellpadding="10px">
+				<tr>
+					<th colspan="2" class="head">
+						Select a Plan!
+					</th>					
+				</tr>
+				<tr style="vertical-align: top;">
+					<td width="50%" style="text-align: center; border-right: 2px dotted black;" class="renew2">
+						<label for="basic" class="radiobox">
+							<b style="font-size: 20px;">
+								<input type="radio" name="membership_plan" value="Basic" id="basic">Basic
+							</b>
+							<br>
+							<ul style="text-align: left;">
+								<li>Unlimited Members</li>
+								<li>Database Management</li>
+								<li>24x7 Support</li>
+								<li>INR 700/- PER YEAR</li>
+							</ul>
+						</label>
+					</td>
+					
+					<td style="text-align: center;" class="renew1">
+						<label for="premium" class="radiobox">
+							<b style="font-size: 20px;">
+								<input type="radio" name="membership_plan" value="Premium" id="premium">Premium
+							</b>
+							<br>
+							<ul style="text-align: left;">
+								<li>Unlimited Members</li>
+								<li>Database Management</li>
+								<li>24x7 Support</li>
+								<li>Auto Database Backup</li>
+								<li>Monthly Reports</li>
+								<li>INR 1,000/- PER YEAR</li>
+							</ul>
+						</label>
+					</td>
+				</tr>
+				<tr>
+					<th colspan="2" style="text-align: right;">
+						<button onclick="uncheck()" class="b2">Clear</button>
+						<button form="plan" type="submit" class="b2">Next</button>
+					</th>
+				</tr>
+			</table>
+		</form>
+	</div>
+
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6146df2a25797d7a89ffb56c/1ffudffrm';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+</body>
+</html>

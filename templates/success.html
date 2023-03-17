@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Payment</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/c.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<meta http-equiv="refresh" content="5;url={% url 'welcome' %}">
+</head>
+<body class="b">
+	<div style="width: 70%; margin: auto;" align="center">
+		<table class="table1" width="100%" cellpadding="10px">
+			<tr>
+				<th colspan="2">
+					Payment Reciept
+				</th>
+			</tr>
+			<tr>
+				<th>
+					Username:
+				</th>
+				<td>
+					{{ request.user.username }}
+				</td>
+			</tr>
+			<tr>
+				<th>
+					Plan:
+				</th>
+				<td>
+					{{ m.plan }}
+				</td>
+			</tr>
+			<tr>
+				<th>
+					Payment ID:
+				</th>
+				<td>
+					{{ n.payment_id }}
+				</td>
+			</tr>
+			<tr>
+				<th>
+					Subscription Period:
+				</th>
+				<td>
+					{{ n.date }} - {{ n.due_date }}
+				</td>
+			</tr>
+			<tr>
+				<th colspan="2">
+					Redirecting in 5 Sec..
+				</th>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

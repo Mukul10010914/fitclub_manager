@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{{t.name}} - {{request.user.username}}</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/c.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<script type="text/javascript">
+		function openNav() 
+		{
+		  	document.getElementById("mySidebar").style.width = "250px";
+		}
+
+		function closeNav() 
+		{
+			document.getElementById("mySidebar").style.width = "0";
+		}
+	</script>
+
+	<style type="text/css">
+		.avatar 
+		{
+		  	vertical-align: middle;
+		  	width: 200px;
+		  	height: 200px;
+		  	border-radius: 50%;
+		}
+
+		.container input[type=checkbox]:checked
+		{
+			background-color: e7a414;
+		}
+	</style>
+</head>
+<body class="b">
+	<div id="mySidebar" class="sidebar">
+	  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+	  	<a href="{% url 'member' %}">Members</a>
+	  	<a href="{% url 'settings' %}">Settings</a>
+	  	<a href="{% url 'features' %}">Features</a>
+	  	<a href="{% url 'contact' %}">Contact Us</a>
+	  	<a href="{% url 'logout' %}">Log Out</a>
+	</div>
+
+	<div class="navbar">
+	  	<a href="{% url 'welcome' %}" style="width: 85%; text-align: left;">FitClub Manager</a>
+	  	<a class="openbtn" onclick="openNav()">☰</a>
+	</div>
+
+	<div class="w3-sidebar w3-bar-block" style="width:35%; position: absolute; top: 5%; background-color: #E5E7E9; overflow-x: auto; overflow-y: scroll;">
+		<br>
+	  	<table align="center" class="table1" cellpadding="10px" width="85%">
+	  		<tr>
+	  			<td colspan="2" style="text-align: left;">
+	  				<a href="{% url 'member' %}">
+	  					<i class="fa fa-arrow-left" aria-hidden="true"></i>
+	  				</a>
+	  			</td>
+	  		</tr>
+	  		<tr>
+	  			<th colspan="2" style="text-align: center;">
+	  				<i>..Personal Details..</i>
+	  			</th>
+	  		</tr>
+	  		<tr>
+	  			<th colspan="2" style="text-align: center;">
+	  				<img src="{{ t.profile_image.url }}" alt="{{ t.name }}" class="avatar">
+	  			</th>
+	  		</tr>
+	  		<tr>
+	  			<th colspan="2">
+	  				<h3 style="font-size: 24px; font-weight: bold; text-align: center;">{{ t.name|upper }}</h3>
+	  			</th>
+	  		</tr>
+	  		<tr>
+	  			<th>
+	  				Phone Number
+	  			</th>
+	  			<td style="text-align: right;">
+	  				{{ t.phone_number }}
+	  			</td>
+	  		</tr>
+	  		<tr>
+	  			<th>
+	  				Email
+	  			</th>
+	  			<td style="text-align: right;">
+	  				{{ t.email }}
+	  			</td>
+	  		</tr>
+	  		<tr>
+	  			<th>
+	  				Gender
+	  			</th>
+	  			<td style="text-align: right;">
+	  				{{ t.gender }}
+	  			</td>
+	  		</tr>
+	  		{% if t.emergency_phone_number != "0000000000" %}
+				<tr>
+					<th>Emergency Number</th>
+					<td style="text-align: right;">
+						{{ t.emergency_phone_number }}
+					</td>
+				</tr>
+			{% endif %}
+			<tr>
+				<th>
+					Date Of Birth
+				</th>
+				<td style="text-align: right;">
+					{{ t.dob }}
+				</td>
+			</tr>
+			<tr>
+				<th>
+					Address
+				</th>
+				<td style="text-align: right;">
+					{{ t.address }}
+				</td>
+			</tr>
+			<tr>
+				<th>
+					Father's Name
+				</th>
+				<td style="text-align: right;">
+					{{ t.father_name }}
+				</td>
+			</tr>
+			<tr>
+				<th>
+					Mother's Name
+				</th>
+				<td style="text-align: right;">
+					{{ t.mother_name }}
+				</td>
+			</tr>
+			{% if f == 1 %}
+				<tr>
+					<th>Date Of Anniversary</th>
+					<td style="text-align: right;">
+						{{ t.doa }}
+					</td>
+				</tr>
+				<tr>
+					<th>
+						Spouse's Name
+					</th>
+					<td style="text-align: right;">
+						{{ t.spouse_name }}
+					</td>
+				</tr>
+			{% endif %}
+			<tr></tr>
+	  	</table>
+	</div>
+
+	{% block body %}{% endblock body %}
+
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6146df2a25797d7a89ffb56c/1ffudffrm';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+</body>
+</html>

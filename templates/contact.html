@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Contact</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/c.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+	<script type="text/javascript">
+		function openNav() 
+		{
+		  	document.getElementById("mySidebar").style.width = "300px";
+		}
+
+		function closeNav() 
+		{
+			document.getElementById("mySidebar").style.width = "0";
+		}
+	</script>
+</head>
+<body class="b">
+	<div id="mySidebar" class="sidebar">
+	  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+	  	{% if request.user.is_authenticated %}
+	  		<a href="{% url 'member' %}">Members</a>
+	  	{% else %}
+	  		<a href="{% url 'about' %}">About Us</a>
+	  	{% endif %}
+
+	  	{% if request.user.is_authenticated %}
+	  		<a href="{% url 'settings' %}">Settings</a>
+	  	{% else %}
+	  		<a href="{% url 'signin' %}">Login</a>
+	  	{% endif %}
+
+	  	<a href="{% url 'features' %}">Features</a>
+	  	<a href="{% url 'contact' %}">Contact Us</a>
+	  	
+	  	{% if request.user.is_authenticated %}
+	  		<a href="{% url 'logout' %}">Log Out</a>
+	  	{% else %}
+	  		<a href="{% url 'signup' %}">Start Your 30-Day Free Trial</a>
+	  	{% endif %}
+	</div>
+
+	<div class="navbar">
+		{% if request.user.is_authenticated %}
+	  		<a href="{% url 'welcome' %}" style="width: 85%; text-align: left;">FitClub Manager</a>
+	  	{% else %}
+	  		<a href="{% url 'home' %}" style="width: 85%; text-align: left;">FitClub Manager</a>
+	  	{% endif %}
+	  	<a class="openbtn" onclick="openNav()">☰</a>
+	</div>
+
+	<br>
+	<br>
+
+	<h1 class="td1" style="margin-left: 20px;">Contact US</h1>
+
+	<div style="width: 70%; margin: auto;" align="center">
+		<table cellspacing="10px" width="80%" class="table1">
+			<tr>
+				<th width="50%">Fill the Query Form</th>
+				<th>WE ARE ALWAYS READY TO HELP YOU</th>
+			</tr>
+			<tr class="td1">
+				<td rowspan="4">
+					<form method="POST" action="{% url 'contact' %}">
+						{% csrf_token %}
+					  	<label for="name">Name</label> <i>*</i>
+					  	<input type="text" id="name" name="name">
+					  	<label for="gym_or_club">Club/Gym Name</label> <i>*</i>
+					  	<input type="text" id="gym_or_club" name="gym_or_club">
+					  	<label for="email">Email</label> <i>*</i>
+					  	<input type="text" id="email" name="email">
+					  	<label for="mobile">Mobile #</label> <i>*</i>
+					  	<input type="text" id="mobile" name="mobile">
+					  	<input type="submit">
+					</form>
+				</td>
+				<td>
+					Our Gym Management Solution is an cloud based software. You can make sure that your data is completely secure from unauthorized access, like Members Data sales to another club.
+				</td>
+			</tr>
+			<tr class="td1">
+				<td>
+					<b>Support</b>
+					<br>
+					+91-8810548394
+				</td>
+			</tr>
+			<tr class="td1">
+				<td>
+					<b>Email</b>
+					<br>
+					mukuljindal1010@gmail.com
+				</td>
+			</tr>
+			<tr class="td1">
+				<td>
+					<b>Address</b>
+					<br>
+					NS-19 UPPER GROUND FLOOR, NS ROAD, MIANWALI NAGAR, PASCHIM VIHAR, DELHI
+				</td>
+			</tr>
+		</table>
+	</div>
+	<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6146df2a25797d7a89ffb56c/1ffudffrm';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+</html>

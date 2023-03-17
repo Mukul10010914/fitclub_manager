@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Welcome {{ request.user.username }}!</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/c.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	
+	<script type="text/javascript">
+		function openNav() 
+		{
+		  	document.getElementById("mySidebar").style.width = "300px";
+		}
+
+		function closeNav() 
+		{
+			document.getElementById("mySidebar").style.width = "0";
+		}
+
+		window.onload = function () 
+		{
+			var chart = new CanvasJS.Chart("chartContainer",
+			{
+				title:{
+					text: "Active/ Non-Active Membership"
+				},
+				legend: {
+					maxWidth: 350,
+					itemWidth: 120
+				},
+				data: [
+				{
+					type: "doughnut",
+					showInLegend: true,
+					legendText: "{indexLabel}",
+					dataPoints: [
+						{ y: {{a}}, indexLabel: "Active Membership" },
+						{ y: {{b}}, indexLabel: "Non-Active Membership" }
+					]
+				}
+				]
+			});
+			chart.render();
+		}
+
+	</script>
+
+	<style type="text/css">
+		.icon::first-letter 
+		{
+		  	font-size: 800%;
+		  	visibility: visible;
+		  	font-family: 'Times New Roman', serif;
+		}
+
+		.icon 
+		{
+		  	visibility: hidden;
+		}
+
+		.avatar 
+		{
+		    /* Center the content */
+		    display: inline-block;
+		    vertical-align: middle;
+
+		    /* Used to position the content */
+		    position: relative;
+
+		    /* Colors */
+		    border: 5px double black;
+		    color: #FFF;
+
+		    /* Rounded border */
+		    border-radius: 50%;
+		    height: 180px;
+		    width: 180px;
+		    margin-left: 20px;
+		}
+
+		.avatar__letters 
+		{
+		    left: 52%;
+		    position: absolute;
+		    top: 45%;
+		    transform: translate(-50%, -50%);
+		    margin-left: 20px;
+		}
+
+		.table2
+		{
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body class="b" style="background-color: #59595c;">
+	<div id="mySidebar" class="sidebar">
+	  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+	  	<a href="{% url 'member' %}">Members</a>
+	  	<a href="{% url 'settings' %}">Settings</a>
+	  	<a href="{% url 'features' %}">Features</a>
+	  	<a href="{% url 'contact' %}">Contact Us</a>
+	  	<a href="{% url 'logout' %}">Log Out</a>
+	</div>
+
+	<div class="navbar">
+	  	<a href="{% url 'welcome' %}" style="width: 85%; text-align: left;">FitClub Manager</a>
+	  	<a class="openbtn" onclick="openNav()">☰</a>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div align="center" style="background-color: #2F2F34; color: #fff; border-bottom: 4px solid black; border-top: 4px solid black;">
+		<table cellspacing="10px" class="table2" align="center" width="70%">
+			<tr>
+				<td rowspan="8">
+					<div class="avatar" id="avatar">
+
+					<script type="text/javascript">
+						function generateRandomColor()
+						{
+						    var randomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+						    return randomColor;
+						    //random color will be freshly served
+						}
+						var a=document.getElementById("avatar")
+						a.style.backgroundColor = generateRandomColor()
+					</script>
+						<div class="avatar__letters">
+							<p class="icon" id="icon">{{ request.user.username|title }}</p>
+						</div>
+					</div>
+				</td>
+				<td>
+					Gym/Club Name:
+				</td>
+				<td style="text-align: center;">
+					{{ request.user.username|title }}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Phone Number:
+				</td>
+				<td style="text-align: center;">
+					{{ m.phone_number }}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Address:
+				</td>
+				<td style="text-align: center;">
+					{{ m.address }}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Email:
+				</td>
+				<td style="text-align: center;">
+					{{ request.user.email }}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Subscription Plan:
+				</td>
+				<td style="text-align: center;">
+					{{ m.plan }}
+					<div class="tooltip">
+						<i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+					  	<span class="tooltiptext">
+					  		{% if m.plan == "Basic" %}
+					  			<ul style="text-align: left;">
+									<li>Unlimited Members</li>
+									<li>Database Management</li>
+									<li>24x7 Support</li>
+								</ul>
+							{% elif m.plan == "Premium" %}
+								<ul style="text-align: left;">
+									<li>Unlimited Members</li>
+									<li>Database Management</li>
+									<li>24x7 Support</li>
+									<li>Auto Database Backup</li>
+									<li>Monthly Reports</li>
+								</ul>
+							{% else %}
+								<ul style="text-align: left;">
+									<li>Unlimited Members</li>
+									<li>Database Management</li>
+									<li>30 Day Trial</li>
+								</ul>
+					  		{% endif %}
+					  	</span>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					Subscription Due Date:
+				</td>
+				<td style="text-align: center;">
+					{{ lw.due_date }} &nbsp;
+					{% if f != "Null" %}
+						<i class="i1">Subscription Over</i>
+						<div class="tooltip">
+							<i class="fa fa-question-circle-o" aria-hidden="true"></i>
+						  	<span class="tooltiptext">
+						  		YOUR <i>ID</i> WILL BE DEACTIVATED WITHIN 2 WEEKS, IF NOT RENEWED.
+						  	</span>
+						</div>
+					{% endif %}
+				</td>
+			</tr>
+			<tr></tr>
+			<tr>
+				<td colspan="2" align="center">
+					{% if f != "Null" %}
+						<button class="b2" onclick="location.href='{% url 'renewal' %}'">Renew Subscription</button>
+					{% endif %}
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<table width="90%" align="center" style=" border: 2px solid black; margin-top: 20px">
+		<tr>
+			<td style="text-align: right;">
+				<div id="chartContainer" style="height: 400px; width: 100%;"></div>
+			</td>
+		</tr>
+	</table>
+
+	<table class="darkTable" align="center" style=" border: 2px solid black; margin-top: 20px; margin-bottom: 20px; width: 75%; font-family: Georgia, serif;">
+		<tr>
+			<th colspan="4" style="text-align: center; font-size: 24px;">
+				Payment History
+			</th>
+		</tr>
+		<tr>
+			<th style="text-align: center;">S.No</th>
+			<th style="text-align: center;">Date</th>
+			<th style="text-align: center;">Due Date</th>
+			<th style="text-align: center;">Payment ID</th>
+		</tr>
+		{% for t in w %}
+			<tr>
+				<td>{{ forloop.revcounter }}</td>
+				<td>{{ t.date }}</td>
+				<td>{{ t.due_date }}</td>
+				<td>{{ t.payment_id }}</td>
+			</tr>
+		{% endfor %}
+	</table>
+</body>
+</html>

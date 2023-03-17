@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Settings</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/c.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<script type="text/javascript">
+		function openNav() 
+		{
+		  	document.getElementById("mySidebar").style.width = "300px";
+		}
+
+		function closeNav() 
+		{
+			document.getElementById("mySidebar").style.width = "0";
+		}
+
+		function myFunction() 
+		{
+		  	var x = document.getElementById("password");
+		  	if (x.type == "password") 
+		  	{
+		    	x.type = "text";
+		  	} 
+		  	else 
+		  	{
+		    	x.type = "password";
+		  	}
+		}
+	</script>
+</head>
+<body class="b">
+	<div id="mySidebar" class="sidebar">
+	  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+	  	<a href="{% url 'member' %}">Members</a>
+	  	<a href="{% url 'settings' %}">Settings</a>
+	  	<a href="{% url 'features' %}">Features</a>
+	  	<a href="{% url 'contact' %}">Contact Us</a>
+	  	<a href="{% url 'logout' %}">Log Out</a>
+	</div>
+
+	<div class="navbar">
+	  	<a href="{% url 'home' %}" style="width: 85%; text-align: left;">FitClub Manager</a>
+	  	<a class="openbtn" onclick="openNav()">☰</a>
+	</div>
+	<div style="width: 60%; margin: auto; margin-top: 10%;" align="center">		
+
+		<button class="accordion">Change Gym/Club Name</button>
+		<div class="panel">
+		  	<form method="POST" action="{% url 'chusername' %}">
+		  		{% csrf_token %}
+		  		<table class="table1">
+			  		<tr>
+			  			<th>
+			  				<label for="new_user">
+			  					New Username:
+			  				</label>
+			  			</th>
+			  			<td>
+			  				<input type="text" name="new_user" required="required">
+			  			</td>
+			  		</tr>
+
+			  		<tr>
+			  			<th colspan="2">
+			  				<input type="submit">
+			  			</th>
+			  		</tr>
+		  		</table>
+		  	</form>
+		</div>
+
+		<button class="accordion">Change Email ID</button>
+		<div class="panel">
+			<form method="POST" action="{% url 'chemail' %}">
+				{% csrf_token %}
+		  		<table class="table1">
+			  		<tr>
+			  			<th>
+			  				<label for="new_email_id">
+			  					New Email ID:
+			  				</label>
+			  			</th>
+			  			<td>
+			  				<input type="text" name="new_email_id" required="required">
+			  			</td>
+			  		</tr>
+
+			  		<tr>
+			  			<th colspan="2">
+			  				<input type="submit">
+			  			</th>
+			  		</tr>
+		  		</table>
+		  	</form>
+		</div>
+
+		<button class="accordion">Change Address</button>
+		<div class="panel">
+			<form method="POST" action="{% url 'chaddress' %}">
+				{% csrf_token %}
+		  		<table class="table1">
+			  		<tr>
+			  			<th>
+			  				<label for="new_address">
+			  					New Address:
+			  				</label>
+			  			</th>
+			  			<td>
+			  				<input type="text" name="new_address" required="required">
+			  			</td>
+			  		</tr>
+
+			  		<tr>
+			  			<th colspan="2">
+			  				<input type="submit">
+			  			</th>
+			  		</tr>
+		  		</table>
+		  	</form>
+		</div>
+
+		<button class="accordion">Change Phone Number</button>
+		<div class="panel">
+			<form method="POST" action="{% url 'chphonenumber' %}">
+				{% csrf_token %}
+		  		<table class="table1">
+			  		<tr>
+			  			<th>
+			  				<label for="new_phone_number">
+			  					New Phone Number:
+			  				</label>
+			  			</th>
+			  			<td>
+			  				<input type="text" name="new_phone_number" required="required">
+			  			</td>
+			  		</tr>
+
+			  		<tr>
+			  			<th colspan="2">
+			  				<input type="submit">
+			  			</th>
+			  		</tr>
+		  		</table>
+		  	</form>
+		</div>
+
+		<button class="accordion">Change Password</button>
+		<div class="panel">
+			<form method="POST" action="{% url 'chpassword' %}">
+				{% csrf_token %}
+		  		<table class="table1">
+		  			<tr>
+		  				<th>
+		  					<label for="old_pass">
+		  						Old Password:
+			  				</label>
+			  			</th>
+			  			<td>
+			  				<input type="text" name="old_pass">
+			  			</td>
+			  		</tr>
+
+			  		<tr>
+			  			<th>
+			  				<label for="new_pass">
+			  					New Password:
+			  				</label>
+			  			</th>
+			  			<td>
+			  				<input type="password" id="password" name="new_pass" required="required" style="width: 100%; padding: 12px 20px; margin: 8px 0px; box-sizing: border-box;">
+			  				<br>
+							<input type="checkbox" onclick="myFunction()"><b style="color: #fff">Show Password</b>
+			  			</td>
+			  		</tr>
+
+			  		<tr>
+			  			<th colspan="2">
+			  				<input type="submit">
+			  			</th>
+			  		</tr>
+		  		</table>
+		  	</form>
+		</div>
+
+		<script>
+		var acc = document.getElementsByClassName("accordion");
+		var i;
+
+		for (i = 0; i < acc.length; i++) {
+		  acc[i].addEventListener("click", function() {
+		    this.classList.toggle("active");
+		    var panel = this.nextElementSibling;
+		    if (panel.style.display === "block") {
+		      panel.style.display = "none";
+		    } else {
+		      panel.style.display = "block";
+		    }
+		  });
+		}
+		</script>
+	</div>
+
+	<script type="text/javascript">
+		var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+		(function(){
+		var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+		s1.async=true;
+		s1.src='https://embed.tawk.to/6146df2a25797d7a89ffb56c/1ffudffrm';
+		s1.charset='UTF-8';
+		s1.setAttribute('crossorigin','*');
+		s0.parentNode.insertBefore(s1,s0);
+		})();
+	</script>
+</body>
+</html>

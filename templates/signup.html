@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>FitClub Manager</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/c.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+	<title>Sign Up</title>
+
+	<script type="text/javascript">
+		function openNav() 
+		{
+		  	document.getElementById("mySidebar").style.width = "300px";
+		}
+
+		function closeNav() 
+		{
+			document.getElementById("mySidebar").style.width = "0";
+		}
+
+		function myFunction() 
+		{
+		  	var x = document.getElementById("password");
+		  	if (x.type == "password") 
+		  	{
+		    	x.type = "text";
+		  	} 
+		  	else 
+		  	{
+		    	x.type = "password";
+		  	}
+		}
+	</script>
+</head>
+<body class="b">
+	<div id="mySidebar" class="sidebar">
+	  	<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+	  	<a href="{% url 'about' %}">About Us</a>
+	  	<a href="{% url 'signin' %}">Login</a>
+	  	<a href="{% url 'features' %}">Features</a>
+	  	<a href="{% url 'signup' %}">Start Your 30-Day Free Trial</a>
+	  	<a href="{% url 'contact' %}">Contact Us</a>
+	</div>
+
+	<div class="navbar">
+	  	<a href="{% url 'home' %}" style="width: 85%; text-align: left;">FitClub Manager</a>
+	  	<a class="openbtn" onclick="openNav()">☰</a>
+	</div>
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<div style="width: 40%; margin: auto;" align="center">
+		<form method="POST" action="{% url 'signup' %}">
+			{% csrf_token %}
+			<table class="table1" width="100%" style="padding: 10px 20px; background: #000; color: #E7C314;">
+				<tr>
+					<td colspan="2">
+						<label for="username">Gym/Club Name</label> 
+						<input type="text" id="username" name="username" required="required">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="fname">First Name</label> 
+						<input type="text" id="fname" name="fname" required="required">
+					</td>
+					<td>
+						<label for="lname">Last Name</label> 
+						<input type="text" id="lname" name="lname" required="required">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<label for="email">Email</label> 
+						<input type="text" id="email" name="email" required="required">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<label for="number">Phone Number</label> 
+						<input type="text" id="number" name="number" required="required">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<label for="address">Address</label> 
+						<input type="text" id="address" name="address" required="required">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<label for="password">Password</label> 
+						<input type="password" id="password" name="password" required="required" style="width: 100%; padding: 12px 20px; margin: 8px 0px; box-sizing: border-box;">
+						<br>
+						<input type="checkbox" onclick="myFunction()">Show Password
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="submit">
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<br>
+
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6146df2a25797d7a89ffb56c/1ffudffrm';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+</html>

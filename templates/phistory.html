@@ -1,0 +1,73 @@
+{% extends 'profile.html' %}
+
+{% block body %}
+	<div style="width: 60%; margin: auto; margin-top: 70px; margin-left: 38%;">
+		<i style="color: #e7a414; font-size: 25px; font-weight: bold;">..Membership Details..</i>
+		<ul class="snav">
+		  	<li>
+		  		<form method="POST" action="{% url 'profile' %}">
+		  			{% csrf_token %}
+		  			<input type="hidden" name="client_id" value="{{t.id}}">
+		  			<input type="submit" Value="History" class="active" style="text-align: center; border: none; padding: 14px 16px; text-decoration: none;">
+		  		</form>
+		  	</li>
+		  	<li>
+		  		<form method="POST" action="{% url 'prenew' %}">
+		  			{% csrf_token %}
+		  			<input type="hidden" name="client_id" value="{{t.id}}">
+		  			<input type="submit" Value="Renew Membership" style="text-align: center; border: none; padding: 14px 16px; text-decoration: none; background: transparent; color: white;">
+		  		</form>
+		  	</li>
+		  	<li>
+		  		<form method="POST" action="{% url 'profile' %}">
+		  			{% csrf_token %}
+		  			<input type="hidden" name="client_id" value="{{t.id}}">
+		  			<input type="submit" Value="Edit Details" style="text-align: center; border: none; padding: 14px 16px; text-decoration: none; background: transparent; color: white;">
+		  		</form>
+		  	</li>
+		</ul>
+	</div>
+
+	<div style="width: 60%; margin-left: 38%; margin-top: 20px; overflow-x: auto;">
+
+		{% if p == 1 %}
+			<div class="large-4 columns">
+				<div class="corner-ribbon top-right sticky blue shadow">Subscription Over</div>
+			</div>
+		{% endif %}
+
+
+		<table class="darkTable" width="100%" align="center" style="font-size: 13px;">
+			<tr style="border: 2px solid black;">
+				<th style="border: 2px solid black;">S.No.</th>
+				<th style="border: 2px solid black;">Plan</th>
+				<th style="border: 2px solid black;">Amount</th>
+				<th style="border: 2px solid black;">Discount</th>
+				<th style="border: 2px solid black;">Final Amount</th>
+				<th style="border: 2px solid black;">Date</th>
+				<th style="border: 2px solid black;">Due Date</th>
+				<th style="border: 2px solid black;">Payment Method</th>
+				<th style="border: 2px solid black;">Paid</th>
+			</tr>
+			{% for p in w %}
+				<tr>
+					<td>{{ forloop.revcounter }}</td>					
+					<td>{{ p.plan }}</td>
+					<td>₹{{ p.amount }}</td>
+					<td>(₹{{ p.discount }})</td>
+					<td>₹{{ p.final_amount }}</td>
+					<td>{{ p.date }}</td>
+					<td>{{ p.due_date }}</td>
+					<td>{{ p.payment_method }}</td>
+					<td class="container">
+						<input type="checkbox" name="paid" checked="{{ p.paid }}" onclick="return false">
+					</td>
+				</tr>
+			{% empty %}
+				<tr>
+					<td colspan="6">Nothing to Display</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
+{% endblock body %}
